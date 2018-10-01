@@ -1,0 +1,50 @@
+<meta charset="UTF-8">
+
+<script>
+	
+	function pulaLinha() {
+
+		document.write("<br>");	
+		document.write("<br>");	
+	}
+
+	function mostra(frase) {
+
+		document.write(frase);
+		pulaLinha();
+	}
+
+	var numeroPar=2;
+	var numeroParFim;
+	
+	function repita(numeroParFim){
+		while(numeroPar<=numeroParFim){
+			mostra("numero par "+ numeroPar);
+			numeroPar=numeroPar+2;
+		}
+	}
+
+	var numeroParFim;
+
+	while(isNaN(numeroParFim)){
+		numeroParFim=parseInt(prompt("Informe o numero par Limite: "));
+	}
+
+	repita(numeroParFim);
+
+	mostra("Fim.");
+
+	for(var linha = 1; linha <= 3; linha++) {
+
+        for(var coluna = 1; coluna <= 10; coluna++) {
+            document.write("*");
+        }
+        pulaLinha();
+    }
+
+
+</script>
+
+
+
+

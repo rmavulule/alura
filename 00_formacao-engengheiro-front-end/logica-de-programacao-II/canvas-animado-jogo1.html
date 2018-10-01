@@ -1,0 +1,64 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+var tela=document.querySelector('canvas');
+var pincel=tela.getContext('2d');
+
+function limpaTela() {
+	pincel.clearRect(0,0,600,400);
+	pincel.fillStyle='lightgrey';
+	pincel.fillRect(0,0,600,400);
+}
+
+limpaTela();
+
+var raio=10;
+var xAleatorio;
+var yAleatorio;
+
+
+function desenharCirculo(x,y,raio,cor){
+	pincel.fillStyle=cor;
+	pincel.beginPath();
+	pincel.arc(x,y,raio,0,2*Math.PI);
+	pincel.fill();
+}
+
+
+function desenhaAlvo(x,y){
+	desenharCirculo(x,y,raio+20,'red');
+	desenharCirculo(x,y,raio+10,'white');
+	desenharCirculo(x,y,raio,'red');
+}
+
+function sorteiaPosicao(maximo){
+	return Math.floor(Math.random()*maximo);
+}
+
+function actualizaTela(){
+	limpaTela();
+	xAleatorio=sorteiaPosicao(600);
+	yAleatorio=sorteiaPosicao(400);
+
+	desenhaAlvo(xAleatorio,yAleatorio);
+}
+
+function dispara(evento){
+	var x=evento.pageX-tela.offsetLeft;
+	var y=evento.pageY-tela.offsetTop;
+
+	if((x>xAleatorio-raio)
+		&& (x<xAleatorio+raio)
+		&& (y>yAleatorio-raio)
+		&& (y<yAleatorio+raio)){
+
+		alert("Acertou no alvo !");
+	}
+
+}
+
+tela.onclick=dispara;
+
+setInterval(actualizaTela,1000);
+
+</script>

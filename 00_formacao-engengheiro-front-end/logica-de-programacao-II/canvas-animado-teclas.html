@@ -1,0 +1,72 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+var tela=document.querySelector('canvas');
+var pincel=tela.getContext('2d');
+
+function limpaTela() {
+	pincel.clearRect(0,0,600,400);
+	pincel.fillStyle='lightgrey';
+	pincel.fillRect(0,0,600,400);
+}
+
+limpaTela();
+
+//eixos
+var x=20;
+var y=20
+
+//taxa de incremento
+var taxa=5;
+
+//codicos de teclas
+var setaEsquera=37;
+var setaDireita=39;
+var setaCima=38;
+var setaBaixo=40;
+
+
+function desenharCirculo(x,y,r){
+	pincel.fillStyle='blue';
+	pincel.beginPath();
+	pincel.arc(x,y,r,0,2*Math.PI);
+	pincel.fill();
+}
+
+
+function actualizaTela(){
+	limpaTela();
+	desenharCirculo(x,y,10);
+}
+
+
+//setInterval(actualizaTela,20);
+
+function leDoTeclado(evento){
+	console.log('tecla pressionada '+ evento.keyCode);
+	if(evento.keyCode==setaEsquera){
+		console.log("esquerdo");
+		x=x-taxa;
+	}
+
+	if(evento.keyCode==setaCima){
+		console.log("cima");
+		y=y-taxa;
+	}
+
+	if(evento.keyCode==setaDireita){
+		console.log("direita");
+		x=x+taxa;
+	}
+
+	if(evento.keyCode==setaBaixo){
+		console.log("baixo");
+		y=y+taxa;
+	}
+
+	actualizaTela();
+}
+
+document.onkeydown=leDoTeclado;
+
+</script>

@@ -1,0 +1,28 @@
+<meta charset="utf-8">
+
+<h1>Indice de massa corporal</h1>
+<hr></hr>
+<br>
+
+<script>
+	function pulaLinha(){
+		document.write("<br><br>");
+	}
+
+	function mostra(msg){
+		document.write(msg);
+		pulaLinha();
+	}
+
+	function calculaImc(altura, peso){
+		var imc=peso/(altura*altura);
+		return imc;
+	}
+
+	var nome=prompt("informe o seu nome: ");
+	var alturaInformada=prompt(nome+", informe a altura: ");
+	var pesoInformado=prompt(nome +",informe o peso: ");
+	mostra(nome+", o seu IMC é "+calculaImc(alturaInformada,pesoInformado));
+	
+</script>
+

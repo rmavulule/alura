@@ -1,0 +1,64 @@
+<canvas width="600" height="400"></canvas>
+<br>
+Escolha uma cor <input type="color">
+
+<script>
+	var tela=document.querySelector('canvas');
+	var pincel=tela.getContext('2d');
+	var qtyClick=0;
+	var cores=['blue','green','red'];
+	var i=0;
+	var desenha=false;
+	var inputCor=document.querySelector('input');
+
+	pincel.fillStyle='lightgray';
+	pincel.fillRect(0,0,600,400);
+
+	//desenhar circulo
+	function desenhaCirculo(x,y,raio){
+
+		pincel.fillStyle=inputCor.value; // pegar cor do inputcolor
+		pincel.beginPath();
+		if (qtyClick>4) {
+			qtyClick=0;
+		}
+		qtyClick++;
+		pincel.arc(x,y,raio,0,(qtyClick/2)*3.14);
+		pincel.fill();
+		//console.log(x+' , '+y);
+		
+	}
+
+	function desenhaCirculoNaPosicaoClicada(evento){
+		console.log(evento);
+
+		var x=evento.pageX-tela.offsetLeft;
+		var y=evento.pageY-tela.offsetTop;
+		var raio=10;
+	
+		//mudar raio ao clicar com o shift pressionado
+		if(evento.shiftKey){
+			raio=50;
+		}
+
+		//Verificar se o leftmouse está clicado
+		if(desenha){
+			desenhaCirculo(x,y,raio);
+		}
+
+	}
+
+	tela.onclick=desenhaCirculoNaPosicaoClicada;
+	tela.onmousemove=desenhaCirculoNaPosicaoClicada;
+
+	//funcoes anonimas (associadas ao onmousedown e onmouseup), substituindo o bloco comentado
+	tela.onmousedown=function(){ //associado ao mousedown para permitir o desenho no evento mouse move
+		desenha=true;
+	}
+
+	tela.onmouseup=function (){//associado ao mouseup para desabilitar o desenho no evento mouse move
+		desenha=false;
+	}	
+
+
+</script>

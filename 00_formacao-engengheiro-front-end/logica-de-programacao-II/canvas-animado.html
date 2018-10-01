@@ -1,0 +1,70 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+var tela=document.querySelector('canvas');
+var pincel=tela.getContext('2d');
+
+function limpaTela() {
+	pincel.clearRect(0,0,600,400);
+	pincel.fillStyle='lightgrey';
+	pincel.fillRect(0,0,600,400);
+}
+
+limpaTela();
+
+function desenharCirculo(x,y,r){
+	pincel.fillStyle='blue';
+	pincel.beginPath();
+	pincel.arc(x,y,r,0,2*Math.PI);
+	pincel.fill();
+}
+
+function exibeMensagemNoConsole() {
+    console.log('Chamei função');
+ }
+
+var x=20;
+var raio=20;
+var indo=true;
+var crescendoRaio=true;
+function actualizaTela(){
+	limpaTela();
+	desenharCirculo(x,200,raio);
+
+	//indo e voltando
+	if(x==600){
+		indo=false;
+	}else if(x==20){
+		indo=true;
+	}
+	if(indo){
+		x++;
+	}else{
+		x--;
+	}
+	//crescendo
+	if(raio==30){
+		crescendoRaio=false;
+	}else if(raio==20){
+		crescendoRaio=true;
+	}
+	if(crescendoRaio){
+		raio++;
+	}else{
+		raio--;
+	}
+}
+
+
+/*
+for (var x = 20; x < 600; x++) {
+	limpaTela();
+	desenharCirculo(x,20,10);
+}
+*/
+
+//setInterval(exibeMensagemNoConsole,1000);
+
+setInterval(actualizaTela,20);
+
+</script>
