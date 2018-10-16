@@ -5,6 +5,8 @@
     margin: 1em 2em;
     width: 30ch;
     box-sizing: border-box;
+    transition: transform 1s linear, box-shadow 1s ease-in;
+    transition-delay: 0s, 1;
 }
 
 .citacao-bio:nth-of-type(even) {
@@ -51,4 +53,37 @@
 
 .citacao-bio > p {
     position: relative;
+}
+
+.habilidades {
+    border-collapse: separate;
+    border-spacing: .25em;
+    margin: 1em 0;
+}
+
+.habilidades th {
+    font-weight: bold;
+    background-color: #851944;
+    color: white;
+}
+
+.habilidades td {
+    background-color: #eee;
+}
+
+.habilidades th,
+.habilidades td {
+    padding: 1em;
+}
+
+.habilidades thead th {
+    background-color: #3C1D3D;
+}
+
+.habilidades [colspan] {
+    text-align: center;
+    font-style: italic;
+}
+.habilidades [rowspan] {
+    vertical-align: middle;
 }
