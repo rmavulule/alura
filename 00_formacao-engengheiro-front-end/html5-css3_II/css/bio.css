@@ -32,47 +32,23 @@
     transform: scale(1.2) rotate(-5deg);
 }
 
-.container > p:first-letter{
+.container > p::first-letter {
     font-size: 200%;
+    font-weight: bold;
+    color: #3C1D3D;
+    text-shadow: 1px 1px #000;
     margin-right: .2ch;
     line-height: 1;
 }
 
-.citacao-bio::before{
-    content: '"';
+.citacao-bio::before {
+    content: '“';
+    position: absolute;
     font-size: 10em;
-    position: absolute;
-    color: #bbb;
     line-height: .8;
+    color: #bbb;
 }
-.citacao-bio > p{
+
+.citacao-bio > p {
     position: relative;
-}
-
-.icones-redes-sociais a{
-    position: relative;
-}
-.icones-redes-sociais a:hover::after,
-.icones-redes-sociais a:focus::after{
-    content: attr(data-legenda);
-    position: absolute;
-    top: 100%;
-    right: 0;
-    text-indent: 0;
-    width: 300%;
-    background: black;
-    font-size: .8em;
-
-}
-
-.icones-redes-sociais a:hover::before,
-.icones-redes-sociais a:focus::before{
-    content: "";
-    width: 1em;
-    height: 1em;
-    background-color: black;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translateY(.5em) rotate(45deg);
 }
